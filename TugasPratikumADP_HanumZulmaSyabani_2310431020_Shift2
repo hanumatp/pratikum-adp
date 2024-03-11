@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+ int jumlahMatKul, totalSks = 0;
+ float nilai, sks, totalBobot = 0, IPSemester;
+
+ // Input jumlah matakuliah pada semester 1
+ cout << "Masukkan jumlah matakuliah pada semester 1: "; 
+ cin >> jumlahMatKul;
+
+ // Input nilai dan sks untuk setiap mata kuliah
+ cout << "Masukkan nilai dan sks untuk setiap mata kuliah: \n";
+ for (int i = 1; i <= jumlahMatKul; ++i){
+ cout << "Mata Kuliah " << i << " Nilai: "; 
+ cin >> nilai;
+ cout << "Mata Kuliah " << i << " SKS: "; 
+ cin >> sks;
+
+ // Menghitung total bobot dan total sks
+ totalBobot += nilai*sks;
+ totalSks += sks;
+ }
+
+ // Menghitung IP Semester
+ if (totalSks>0)
+ IPSemester = totalBobot / totalSks;
+ else 
+ IPSemester = 0;
+
+ // Output data nilai matakuliah dan IP Semester
+ cout << "----------\n";
+ cout << "Data Nilai Matakuliah Semester 1\n";
+ cout << "----------\n";
+ cout << "Total SKS: " << totalSks << endl;
+ cout << "IP Semester: " << IPSemester << endl;
+ cout <<"----------\n";
+ return 0;
+}

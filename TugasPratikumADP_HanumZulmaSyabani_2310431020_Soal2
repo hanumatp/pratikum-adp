@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+// Fungsi untuk menghitung tinggi segitiga tegak dalam limas
+float hitungTinggiSegitiga(float panjangSisiAlas, float tinggiLimas) {
+ return (panjangSisiAlas / 2 * panjangSisiAlas / 2 + tinggiLimas * tinggiLimas);
+}
+
+// Fungsi untuk menghitung volume limas
+float hitungVolumeLimas(float panjangSisiAlas, float tinggiLimas) {
+ return (panjangSisiAlas * panjangSisiAlas * tinggiLimas) / 6;
+}
+
+// Fungsi untuk menghitung luas permukaan limas
+float hitungLuasPermukaanLimas(float panjangSisiAlas, float tinggiLimas) {
+ float tinggiSegitiga = hitungTinggiSegitiga(panjangSisiAlas, tinggiLimas);
+ return panjangSisiAlas * panjangSisiAlas + panjangSisiAlas * tinggiSegitiga;
+}
+
+int main() {
+ float panjangSisiAlas, tinggiLimas;
+ cout << "Masukkan panjang sisi alas limas: ";
+ cin >> panjangSisiAlas;
+ cout << "Masukkan tinggi limas: ";
+ cin >> tinggiLimas;
+
+ // Menghitung dan menampilkan hasil dengan presisi 2 angka desimal
+ cout << fixed;
+ float volume = hitungVolumeLimas(panjangSisiAlas, tinggiLimas);
+float luasPermukaan = hitungLuasPermukaanLimas(panjangSisiAlas, tinggiLimas);
+cout << "Volume limas: " << volume << endl;
+cout << "Luas permukaan limas: " << luasPermukaan << endl;
+ return 0;
+}

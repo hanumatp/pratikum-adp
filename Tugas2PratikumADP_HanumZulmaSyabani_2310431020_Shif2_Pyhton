@@ -1,0 +1,55 @@
+# Dictionary untuk menyimpan tujuan dan harganya
+tujuan_harga = {
+    "Medan": 315000,
+    "Padang": 150000,
+    "Jambi": 270000,
+    "Bukittinggi": 80000,
+    "Riau": 250000,
+    "Bengkulu": 255000
+}
+
+# Dictionary untuk menyimpan kelas dan biaya tambahannya
+kelas_biaya = {
+    "Ekonomi Class": 10000,
+    "Bisnis Class": 20000,
+    "First Class": 30000
+}
+
+# Input pilihan tujuan
+print("Output 1: Bus PT ANS Lintas Sumatera")
+print("Tujuan:")
+for index, tujuan in enumerate(tujuan_harga, start=1):
+    print(f"{index}. {tujuan}: Rp {tujuan_harga[tujuan]}")
+tujuan_pilihan = int(input("Tujuan yang dipilih: "))
+
+# Input pilihan kelas dan jumlah tiket
+print("\nOutput 2: Kelas (biaya tambahan)")
+for index, kelas in enumerate(kelas_biaya, start=1):
+    print(f"{index}. {kelas}: Rp {kelas_biaya[kelas]}")
+kelas_pilihan = int(input("Kelas yang dipilih: "))
+jumlah_tiket = int(input("Jumlah tiket: "))
+
+# Menghitung total biaya
+total = ((tujuan_harga[list(tujuan_harga.keys())[tujuan_pilihan - 1]] + kelas_biaya[list(kelas_biaya.keys())[kelas_pilihan - 1]])) * jumlah_tiket
+
+# Output 3: Detail Pembelian Tiket
+print("\nOutput 3:")
+print("Tujuan:", list(tujuan_harga.keys())[tujuan_pilihan - 1])
+print("Kelas:", list(kelas_biaya.keys())[kelas_pilihan - 1])
+print("Jumlah tiket:", jumlah_tiket)
+print("Total: Rp", total)
+
+# Menghitung diskon
+if jumlah_tiket >= 3 and jumlah_tiket <= 5:
+    diskon = total * 5 // 100
+elif jumlah_tiket > 5:
+    diskon = total * 10 // 100
+else:
+    diskon = 0
+
+# Output diskon
+print("Diskon: Rp", diskon)
+
+# Menghitung total setelah diskon
+total_setelah_diskon = total - diskon
+print("Total setelah diskon: Rp", total_setelah_diskon)

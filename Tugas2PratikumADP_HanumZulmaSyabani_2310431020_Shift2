@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    string tujuan[6] = {"Medan", "Padang", "Jambi", "Bukittinggi", "Riau", "Bengkulu"};
+    int hargaTujuan[6] = {315000, 150000, 270000, 80000, 250000, 255000};
+    string kelas[3] = {"Ekonomi Class", "Bisnis Class", "First Class"};
+    int hargaKelas[3] = {10000, 20000, 30000};
+
+    int tujuanPilihan, kelasPilihan, jumlahTiket;
+    int total, diskon, totalSetelahDiskon;
+
+    // Output 1: Pilihan Tujuan
+    cout << "Output 1: Bus PT ANS Lintas Sumatera\n";
+    cout << "Tujuan:\n";
+    for (int i = 0; i < 6; ++i) {
+        cout << i + 1 << ". " << tujuan[i] << ": Rp " << hargaTujuan[i] << endl;
+    }
+    cout << "Tujuan yang dipilih: ";
+    cin >> tujuanPilihan;
+
+    // Output 2: Pilihan Kelas dan Jumlah Tiket
+    cout << "\nOutput 2: Kelas (biaya tambahan)\n";
+    for (int i = 0; i < 3; ++i) {
+        cout << i + 1 << ". " << kelas[i] << ": Rp " << hargaKelas[i] << endl;
+    }
+    cout << "Kelas yang dipilih: ";
+    cin >> kelasPilihan;
+    cout << "Jumlah tiket: ";
+    cin >> jumlahTiket;
+
+    // Menghitung total biaya
+    total = (hargaTujuan[tujuanPilihan - 1] + hargaKelas[kelasPilihan - 1]) * jumlahTiket;
+
+    // Output 3: Detail Pembelian Tiket
+    cout << "\nOutput 3:\n";
+    cout << "Tujuan: " << tujuan[tujuanPilihan - 1] << endl;
+    cout << "Kelas: " << kelas[kelasPilihan - 1] << endl;
+    cout << "Jumlah tiket: " << jumlahTiket << endl;
+    cout << "Total: Rp " << total << endl;
+
+    // Menghitung diskon
+    if (jumlahTiket >= 3 && jumlahTiket <= 5) {
+        diskon = total * 5 / 100;
+    } else if (jumlahTiket > 5) {
+        diskon = total * 10 / 100;
+    } else {
+        diskon = 0;
+    }
+    cout << "Diskon: Rp " << diskon << endl;
+
+    // Menghitung total setelah diskon
+    totalSetelahDiskon = total - diskon;
+    cout << "Total setelah diskon: Rp " << totalSetelahDiskon << endl;
+
+    return 0;
+}

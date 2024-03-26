@@ -1,0 +1,24 @@
+def fibonacci(n):
+    fib = [1, 1]  # Inisialisasi deret Fibonacci dengan f1=1, f2=1
+
+    # Menghitung deret Fibonacci ke-n
+    for i in range(1, n):
+        fib.append(fib[i-1] + fib[i-2])
+    
+    # Menghitung jumlah deret Fibonacci hingga ke-n
+    total = sum(fib)
+
+    return fib[-1], total
+
+while True:
+    try:
+        n = int(input("Masukkan nilai n (3 <= n <= 199, 100 < n < 109): "))
+        if n < 3 or n > 199 or (n <= 100 or n >= 109):
+            raise ValueError("Nilai n tidak memenuhi ketentuan.")
+        
+        fn, total = fibonacci(n)
+        print(f"Bilangan Fibonacci ke-{n} (fn): {fn}")
+        print(f"Jumlah dari f1, f2, ..., fn (Σ fi): {total}")
+        break
+    except ValueError as e:
+        print(e)

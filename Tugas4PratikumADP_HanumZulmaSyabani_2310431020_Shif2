@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cstring>
+#include <cctype>
+
+using namespace std;
+
+string GantiVowelDenganI(const string& teks){
+    string result = "";
+    for (char c: teks) {
+        if (isalpha(c)) {
+            switch (tolower(c)){
+                case 'a':
+                case 'i':
+                case 'u':
+                case 'e':
+                case 'o':
+                    result += 'i';
+                    break;
+                default:
+                    result += c;
+            }
+        } else {
+            result += c;
+        }
+    }
+    return result;
+}
+
+int main() {
+    cout << "Masukkan teks lirik lagu (min 3 kalimat): " << endl;
+    
+    string lirik;
+    getline(cin, lirik);
+    
+    cout << GantiVowelDenganI(lirik) << endl;
+    
+    return 0;
+}

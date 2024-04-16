@@ -1,0 +1,72 @@
+import math
+
+# Fungsi f(x)
+def f(x):
+    if x > 0:
+        return 3 * x**2 + 7 * x - 2
+    else:
+        return 2 * x**2 - 5 * x - 4
+
+# Fungsi g(x)
+def g(x):
+    return f(x)**2 - math.sqrt(f(x))
+
+# Fungsi h(x)
+def h(x):
+    return f(x) * g(x)
+
+def main():
+    print("TABEL FUNGSI")
+    print("f(x)= 3x²+7x-2, jika x>0")
+    print("f(x)=2x²-5x-4, jika x<0")
+    print("g(x)= (f(x))² - √f(x)")
+    print("h(x)= f(x) * g(x)")
+
+    n = int(input("input banyak data n= "))
+
+    x = []
+    fx = []
+    gx = []
+    hx = []
+
+    # Input nilai x
+    for i in range(n):
+        nilai_x = float(input("input nilai x ke-" + str(i + 1) + "= "))
+        x.append(nilai_x)
+        fx.append(f(nilai_x))
+        gx.append(g(nilai_x))
+        hx.append(h(nilai_x))
+
+    # Output Tabel
+    print("\nNo: ", end="")
+    for i in range(n):
+        print(i + 1, end=" ")
+    print()
+
+    print("x: ", end="")
+    for i in range(n):
+        print("x[" + str(i + 1) + "] ", end="")
+    print()
+
+    print("f(x): ", end="")
+    for i in range(n):
+        print(fx[i], end=" ")
+    print()
+
+    print("g(x): ", end="")
+    for i in range(n):
+        print(gx[i], end=" ")
+    print()
+
+    print("h(x): ", end="")
+    for i in range(n):
+        print(hx[i], end=" ")
+    print()
+
+    # Input nilai x lagi
+    again = input("\ninput nilai x lagi? Y/N: ")
+    if again.lower() == 'y':
+        main() # Memanggil kembali fungsi main() jika ingin memasukkan nilai x lagi
+
+if __name__ == "__main__":
+    main()

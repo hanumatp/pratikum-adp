@@ -1,0 +1,89 @@
+#include <iostream>
+#include <cmath>
+#include <vector>
+
+using namespace std;
+
+// Definisikan fungsi f(x)
+double f(double x) {
+    if (x > 0)
+        return 3 * pow(x, 2) + 7 * x - 2;
+    else
+        return 2 * pow(x, 2) - 5 * x - 4;
+}
+
+// Definisikan fungsi g(x)
+double g(double x) {
+    return pow(f(x), 2) - sqrt(f(x));
+}
+
+// Definisikan fungsi h(x)
+double h(double x) {
+    return f(x) * g(x);
+}
+
+int main() {
+    int n;
+    cout << "TABEL FUNGSI" << endl;
+    cout << "f(x)= 3x²+7x-2, jika x>0" << endl;
+    cout << "f(x)=2x²-5x-4, jika x<0" << endl;
+    cout << "g(x)= (f(x))² - √f(x)" << endl;
+    cout << "h(x)= f(x) * g(x)" << endl;
+    cout << "input banyak data n= ";
+    cin >> n;
+
+    vector<double> x(n);
+    vector<double> fx(n);
+    vector<double> gx(n);
+    vector<double> hx(n);
+
+    // Input nilai x
+    for (int i = 0; i < n; ++i) {
+        cout << "input nilai x ke-" << i + 1 << "= ";
+        cin >> x[i];
+        fx[i] = f(x[i]);
+        gx[i] = g(x[i]);
+        hx[i] = h(x[i]);
+    }
+
+    // Output Tabel
+    cout << "\nNo: ";
+    for (int i = 0; i < n; ++i) {
+        cout << i + 1 << " ";
+    }
+    cout << endl;
+
+    cout << "x: ";
+    for (int i = 0; i < n; ++i) {
+        cout << "x[" << i + 1 << "] ";
+    }
+    cout << endl;
+
+    cout << "f(x): ";
+    for (int i = 0; i < n; ++i) {
+        cout << fx[i] << " ";
+    }
+    cout << endl;
+
+    cout << "g(x): ";
+    for (int i = 0; i < n; ++i) {
+        cout << gx[i] << " ";
+    }
+    cout << endl;
+
+    cout << "h(x): ";
+    for (int i = 0; i < n; ++i) {
+        cout << hx[i] << " ";
+    }
+    cout << endl;
+
+    // Input nilai x lagi
+    char again;
+    cout << "\ninput nilai x lagi? Y/N: ";
+    cin >> again;
+    if (again == 'Y' || again == 'y') {
+        main(); // Rekursi untuk memulai kembali fungsi main()
+    }
+
+    return 0;
+}

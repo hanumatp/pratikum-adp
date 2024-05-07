@@ -1,0 +1,31 @@
+nama_mahasiswa = ["Ayu", "Budi", "Caca"]
+nama_matkul = ["adp", "ale", "geo", "kaldu", "matdis"]
+data_nilai = [
+    [70, 85, 65, 88, 72],
+    [77, 89, 78, 67, 85],
+    [87, 96, 67, 78, 93]
+    ]
+    
+print("Data Nilai Ujian:")
+print (nama_matkul, end="\t")
+for i in range(len(data_nilai)):
+    print(nama_mahasiswa[i],end="\t")
+    for j in range(len(data_nilai[i])):
+        print(data_nilai[i][j], end="\t")
+    print()
+
+print("Rata-rata Nilai Ujian:")
+for i in range(len(data_nilai)):
+    rata_rata = sum(data_nilai[i]) / len(data_nilai[i])
+    print(f"{nama_mahasiswa[i]}: {rata_rata:.2f}")
+
+print("Nilai Tertinggi dan Terendah:")
+for j in range(len(nama_matkul)):
+    nilai_matkul = [data_nilai[i][j] for i in range(len(data_nilai))]
+    nilai_tertinggi = max(nilai_matkul)
+    nilai_terendah = min(nilai_matkul)
+    idx_tertinggi = nilai_matkul.index(nilai_tertinggi)
+    idx_terendah = nilai_matkul.index(nilai_terendah)
+    print(f"Mata Kuliah: {nama_matkul[j]}")
+    print(f"Nilai Tertinggi: {nilai_tertinggi} (Mahasiswa: {nama_mahasiswa[idx_tertinggi]})")
+    print(f"Nilai Terendah: {nilai_terendah} (Mahasiswa: {nama_mahasiswa[idx_terendah]})")

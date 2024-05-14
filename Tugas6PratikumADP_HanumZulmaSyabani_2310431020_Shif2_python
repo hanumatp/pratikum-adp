@@ -1,0 +1,31 @@
+def konversi_suhu(suhu, satuan):
+    if satuan == 'C':
+        celcius = suhu
+    elif satuan == 'F':
+        celcius = (suhu - 32) * 5/9
+    elif satuan == 'R':
+        celcius = suhu * 5/4
+    elif satuan == 'K':
+        celcius = suhu - 273.15
+    else:
+        return "Satuan suhu tidak dikenali."
+    
+    if celcius < -273.15:
+        return "Suhu yang diinputkan tidak sesuai."
+        
+    reaumur = celcius * 4/5
+    fahrenheit = celcius * 9/5 + 32
+    kelvin = celcius + 273.15
+    
+    hasil_konversi = f"suhu {suhu} derajat {satuan} dapat dikonversikan menjadi: \n\
+    ||Satuan suhu||Derajat suhu|| \n\
+    ||-----------||------------|| \n\
+    ||Reaumur||{reaumur:.2f}|| \n\
+    ||Fahrenheit||{fahrenheit:.2f}|| \n\
+    ||Kelvin||{kelvin:.2f}||"
+    
+    return hasil_konversi
+
+suhu_input = float(input("Masukkan suhu dalam derajat: "))
+satuan_input = input("Masukkan satuan suhu (C, F, R, K): ")
+print(konversi_suhu(suhu_input, satuan_input))

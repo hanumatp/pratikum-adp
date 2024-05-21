@@ -1,0 +1,46 @@
+def tambah(judul, nama_penulis, nama_penerbit, tahun_terbit):
+    with open("data_buku.txt", "a") as file:
+        file.write(f"{judul}, {nama_penulis}, {nama_penerbit}, {tahun_terbit}\n")
+    print("Data telah ditambahkan")
+
+def hapus(judul):
+    with open("data_buku.txt", "r") as file:
+        lines = file.readlines()
+
+    with open("data_buku.txt", "w") as file:
+        for line in lines:
+            if line.split(',')[0] != judul:
+                file.write(line)
+    print("Data dihapus")
+
+def tampilkan():
+    with open("data_buku.txt", "r") as file:
+        for line in file:
+            judul, nama_penulis, nama_penerbit, tahun_terbit = line.strip().split(",")
+            print(f"Judul: {judul}")
+            print(f"Penulis: {nama_penulis}")
+            print(f"Penerbit: {nama_penerbit}")
+            print(f"Tahun terbit: {tahun_terbit}\n")
+
+print("1. Tambah")
+print("2. Hapus")
+print("3. Tampilkan")
+
+pilih = input("Pilih menu (1/2/3): ")
+
+if pilih == "1":
+    judul = input("Masukkan judul: ")
+    penulis = input("Masukkan nama penulis: ")
+    penerbit = input("Masukkan nama penerbit: ")
+    tahun_terbit = input("Masukkan tahun terbit: ")
+    tambah(judul, penulis, penerbit, tahun_terbit)
+
+elif pilih == "2":
+    judul = input("Masukkan judul buku yang ingin dihapus: ")
+    hapus(judul)
+
+elif pilih == "3":
+    tampilkan()
+
+else:
+    pass
